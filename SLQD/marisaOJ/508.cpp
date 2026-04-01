@@ -11,8 +11,11 @@ typedef long long ll;
 #define sz(a) int(a.size())
 #define allin(a) begin(a), end(a)
 
+const int nmax = 1e5+7;
+
 signed main() {
   cin.tie(nullptr)->sync_with_stdio(false);
-  cout << "Hello world!";
+  //freopen("test.inp", "r", stdin);
+  //freopen("test.out", "w", stdout);
   return 0;
 }
