@@ -1,23 +1,15 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
-typedef unsigned long long ll;
+long long f[10000];
+// f[i] so fib thu i;
 
-#define endl '\n'
-#define ff first
-#define ss second
-#define pb push_back
-#define sz(a) int(a.size())
-#define allin(a) begin(a), end(a)
-
-const int mod = 1e9 + 7;
-const int nmax = 1e5 + 7;
-
-signed main() {
-  cin.tie(nullptr)->sync_with_stdio(false);
-  //freeopen("test.in", "r", stdin);
-  //freeopen("test.out", "w", stdout);
-  
-  return 0;
+int main() {
+    f[1]=1; f[2]=1;
+    for (int i = 3; i <= 1000; ++i) {
+        f[i]=f[i-1]+f[i-2];
+    }
+    cout << f[1000];
+    return 0;
 }
