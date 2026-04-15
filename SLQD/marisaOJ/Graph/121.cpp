@@ -40,7 +40,7 @@ void bfs(int u, int k) {
   }
 }
 
-signed main() {
+int main() {
   cin.tie(nullptr)->sync_with_stdio(false);
   // freeopen("test.in", "r", stdin);
   //freeopen("test.out", "w", stdout);
