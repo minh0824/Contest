@@ -1,6 +1,6 @@
 {
   "CPPTEMPLATE": {
-    "prefix": "cpptemp",
+    "prefix": "tempcpp",
     "body": [
       " #include <iostream>",
       " #include <math.h>",
@@ -21,8 +21,7 @@
       "",
       "signed main() {",
       "  cin.tie(nullptr)->sync_with_stdio(false);",
-      "  // freeopen(\"test.in\", \"r\", stdin);",
-      "  //freeopen(\"test.out\", \"w\", stdout);",
+      "",
       "  return 0;",
       "}",
       ""
