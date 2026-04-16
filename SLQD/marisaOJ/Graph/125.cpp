@@ -17,19 +17,19 @@ typedef unsigned long long ll;
 const int mod = 1e9 + 7;
 const int nmax = 1e5 + 7;
 
-int n, m, a, b, d[2][nmax];
-bool visited[2][nmax];
-vector<int> adj[nmax];
+int n, m, k, d[nmax];
+bool visited[nmax];
+vector<int> doll, adj[nmax];
 
-void bfs(int k, int u) {
+void bfs(int u) {
   queue<int> pq; pq.push(u);
-  visited[k][u]=1;
-  while(!pq.empty()) {
+  visited[u]=1;
+  while (!pq.empty()) {
     int v = pq.front(); pq.pop();
     for (int x : adj[v]) {
-      if (!visited[k][x]) {
-        visited[k][x]=1;
-        d[k][x]=d[k][v]+1;
+      if (!visited[x]) {
+        visited[x]=1;
+        d[x]=d[v]+1;
         pq.push(x);
       }
     }
@@ -38,16 +38,17 @@ void bfs(int k, int u) {
 
 signed main() {
   cin.tie(nullptr)->sync_with_stdio(false);
-  //freeopen("test.in", "r", stdin);
-  //freeopen("test.out", "w", stdout);
-  cin >> n >> m >> a >> b;
+  cin >> n >> m >> k;
+  for (int i = 1; i <= k; ++i) {int x; cin >> x; doll.pb(x);}
   for (int i = 1; i <= m; ++i) {
     int x, y; cin >> x >> y;
     adj[x].pb(y); adj[y].pb(x);
   }
-  bfs(0, a); bfs(1, b);
+  bfs(n);
   int cnt = 0;
-  for (int i = 1; i <= n; ++i) if (d[0][i]<=d[1][i]) ++cnt;
-  cout << cnt;
+  for (int i : doll) {
+    if (d[i]<=d[1]) ++cnt;
+  }
+  cout << cnt << endl;
   return 0;
 }

@@ -23,8 +23,8 @@ vector<int> adj[nmax];
 
 void bfs(int k, int u) {
   queue<int> pq; pq.push(u);
-  visited[k][u]=1;
-  while(!pq.empty()) {
+  visited[k][u] = 1;
+  while (!pq.empty()) {
     int v = pq.front(); pq.pop();
     for (int x : adj[v]) {
       if (!visited[k][x]) {
@@ -45,9 +45,15 @@ signed main() {
     int x, y; cin >> x >> y;
     adj[x].pb(y); adj[y].pb(x);
   }
-  bfs(0, a); bfs(1, b);
-  int cnt = 0;
-  for (int i = 1; i <= n; ++i) if (d[0][i]<=d[1][i]) ++cnt;
-  cout << cnt;
+  bfs(0, a), bfs(1, b);
+  int ans = mod;
+  for (int i = 1; i <= n; ++i) {
+    if (d[0][i]%2==d[1][i]%2) ans=min(ans, (d[0][i]+d[1][i])/2);
+  }
+  cout << ((ans!=mod)?ans:-1);
   return 0;
 }
+
+// O--O--O--O--O--O
+// |     |     |
+// O     O-----O

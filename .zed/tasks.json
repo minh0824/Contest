@@ -4,11 +4,11 @@
 [
   {
     "label": "CPPBUILD",
-    "command": "g++ -std=c++17 $ZED_FILE -o ~/Documents/Contest/.build/run && gtimeout 4s ~/Documents/Contest/.build/run<~/Documents/Contest/.build/test.in>~/Documents/Contest/.build/test.out",
+    "command": "g++ -std=c++20 $ZED_FILE -o ~/Documents/Contest/.build/run && gtimeout 4s ~/Documents/Contest/.build/run<~/Documents/Contest/.build/test.in>~/Documents/Contest/.build/test.out",
     //"args": [],
     // Env overrides for the command, will be appended to the terminal's environment from the settings.
     "env": {
-      "foo": "bar"
+      "foo": "bar",
     },
     // Current working directory to spawn the command into, defaults to current project root.
     //"cwd": "/path/to/working/directory",
