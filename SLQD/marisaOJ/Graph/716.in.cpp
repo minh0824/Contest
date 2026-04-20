@@ -38,7 +38,6 @@ void bfs(int i, int j) {
         pq.push({x, y});
       }
     }
-    // dong thoi bfs den nhung canh noi dich chuyen
     for (pair<int, int> x : adj[v.ff][v.ss]) {
       if (!visited[x.ff][x.ss] && !visitedval[a[v.ff][v.ss]]) {
         visited[x.ff][x.ss]=1;
