@@ -2,8 +2,16 @@
   "CPPTEMPLATE": {
     "prefix": "tempcpp",
     "body": [
-      " #include <iostream>",
-      " #include <math.h>",
+      "#include <iostream>",
+      "#include <math.h>",
+      "#include <algorithm>",
+      "#include <cstring>",
+      "#include <iomanip>",
+      "#include <iostream>",
+      "#include <map>",
+      "#include <math.h>",
+      "#include <utility>",
+      "#include <vector>",
       "",
       "using namespace std;",
       "",
@@ -24,9 +32,9 @@
       "",
       "  return 0;",
       "}",
-      ""
+      "",
     ],
-    "description": "CPPTEMPLATE"
+    "description": "CPPTEMPLATE",
   },
   "BINARY EXPONENTIAL WITHOUT %": {
     "prefix": "binpow1",
@@ -36,8 +44,8 @@
       "  ll res = binpow(a, b/2);",
       "  if (b & 1) return res*res*a;",
       "  return res*res;",
-      "}"
+      "}",
     ],
-    "description": "BINARY EXPONENTIAL WITHOUT %"
-  }
+    "description": "BINARY EXPONENTIAL WITHOUT %",
+  },
 }

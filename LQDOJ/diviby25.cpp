@@ -1,4 +1,9 @@
-#include "bits/stdc++.h"
+#include <algorithm>
+#include <iostream>
+#include <map>
+#include <math.h>
+#include <utility>
+#include <vector>
 
 using namespace std;
 
@@ -12,85 +17,40 @@ typedef long long ll;
 #define allin(a) begin(a), end(a)
 
 const int mod = 1e9 + 7;
-const int nmax = 1e5 + 7;
+const int nmax = 5e3 + 7;
 
-int check00(string s, int n) {
-  int pos[2] = {-1, -1};
-  int cnt = 0;
-  s = " " + s;
-  for (int i = 1; i <= n; ++i) {
-    if (s[i] == '0') {
-      pos[cnt] = i;
-      ++cnt;
-    }
-  }
-  if (pos[1] == n || pos[1] == -1)
-    return 1e9;
-  return pos[1] - pos[0] - 1;
-}
-
-int check25(string s, int n) {
-  int pos2 = -1, pos5 = -1;
-  int cnt = 0;
-  s = " " + s;
-  for (int i = 1; i <= n; ++i) {
-    if (s[i] == '2')
-      pos2 = i;
-    if (s[i] == '5')
-      pos5 = i;
-  }
-  if (pos2 == -1 || pos5 == -1 || pos2 < pos5)
-    return 1e9;
-  return pos2 - pos5 - 1;
-}
-
-int check50(string s, int n) {
-  int pos5 = -1, pos0 = -1;
-  int cnt = 0;
-  s = " " + s;
-  for (int i = 1; i <= n; ++i) {
-    if (s[i] == '0')
-      pos0 = i;
-    if (s[i] == '5')
-      pos5 = i;
-  }
-  if (pos5 == -1 || pos0 == -1 || pos5 < pos0)
-    return 1e9;
-  return pos5 - pos0 - 1;
-}
-
-int check75(string s, int n) {
-  int pos7 = -1, pos5 = -1;
-  int cnt = 0;
-  s = " " + s;
-  for (int i = 1; i <= n; ++i) {
-    if (s[i] == '7')
-      pos7 = i;
-    if (s[i] == '5')
-      pos5 = i;
-  }
-  if (pos7 == n || pos5 == -1 || pos7 == -1 || pos7 < pos5)
-    return 1e9;
-  return pos7 - pos5 - 1;
-}
-
-int proc(string s) {
-  int n = sz(s);
-  int ans = 1e9;
-  reverse(allin(s));
-  ans = min({check00(s, n), check25(s, n), check50(s, n), check75(s, n)});
-  return ans;
-}
+int n, a[nmax], x;
 
 signed main() {
   cin.tie(nullptr)->sync_with_stdio(false);
-  int tt;
-  cin >> tt;
-  while (tt--) {
-    string s;
-    cin >> s;
-    // cout << (proc(s) == 1e9 ? 100 : proc(s)) << endl;
+  cin >> n >> x;
+  vector<int> v;
+  for (int i = 1; i <= n; ++i) {
+    cin >> a[i];
+    v.pb(a[i]);
   }
-  cout << check25("265", 3);
+  pair<int, pair<int,int>> ans{}, res{};
+  sort(allin(v));
+  for (int i = 1; i < n; ++i) {
+    for (int j = i+1; j < n-1; ++j) {
+      int k = lower_bound(v.begin()+j+1, v.end(), x-v[i]-v[j])-v.begin();
+      if (j<k&&k<n) ans={v[i], {v[j], v[k]}};
+    }
+  }
+  cout << ans.ff << ' ' << ans.ss.ff << ' ' << ans.ss.ss << endl;
+  if (ans!=res) {
+    int x1{}, x2{}, x3{};
+    for (int i = 1; i <= n; ++i) {
+      if (ans.ff==a[i]) x1=i;
+    }
+    for (int i = 1; i <= n; ++i) {
+      if (ans.ss.ff==a[i]&&i!=x1) x2=i;
+    }
+    for (int i = 1; i <= n; ++i) {
+      if (ans.ss.ss==a[i]&&i!=x2&&i!=x1) x3=i;
+    }
+    if (x1!=0&&x2!=0&&x3!=0) cout<<x1<<' '<<x2<<' '<<x3;
+    else cout << "IMPOSSIBLE";
+  } else cout << "IMPOSSIBLE";
   return 0;
 }
