@@ -1,22 +1,33 @@
-#include "bits/stdc++.h"
+#include "iostream"
 
 using namespace std;
 
 typedef long long ll;
+const int nmax = 1e6+7;
 
-#define endl '\n'
-#define ff first
-#define ss second
-#define pb push_back
-#define sz(a) int(a.size())
-#define allin(a) begin(a), end(a)
+int n, sp;
+int a[nmax];
 
-const int mod = 1e9 + 7;
-const int nmax = 1e5 + 7;
+bool check(ll mid) {
+  long long tongsp{};
+  for (int i = 1; i <= n; ++i) {
+    tongsp+=mid/a[i];
+    if (tongsp>=sp) return 1;
+  }
+  return 0;
+}
 
-signed main() {
-  cin.tie(nullptr)->sync_with_stdio(false);
-  cout << 1000;
-
+int main() {
+  cin >> n >> sp;
+  for (int i = 1; i <= n; ++i) cin >> a[i];
+  ll lo = 1, hi = 1e18+7, kq{};
+  while (lo<=hi) {
+    ll mid = lo + (hi-lo)/2;
+    if (check(mid)) {
+      hi=mid-1;
+      kq=mid;
+    } else lo=mid+1;
+  }
+  cout << kq;
   return 0;
 }

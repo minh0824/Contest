@@ -9,7 +9,7 @@
     "label": "CPPRUN",
     "command": "~/.config/zed/run.sh",
     "allow_concurrent_runs": true,
-    "reveal": "always",
+    "reveal": "no_focus",
     "save": "all",
   },
 ]
