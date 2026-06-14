@@ -9,7 +9,7 @@ long long Rand(long long l, long long r) { return Rd() % (r - l + 1) + l; }
 
 void sinh_test() { ofstream cout("prime.inp"); }
 
-main() {
+int main() {
   for (int iTest = 1; iTest <= nTest; iTest++) {
     sinh_test();
     cout << "Test " << iTest;
